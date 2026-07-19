@@ -578,9 +578,8 @@ function Navbar() {
           .btn-login{ padding:9px 11px; }
         }
 
-        /* Mobile phones (max-width:768px): Hide navbar completely for mobile app/view */
+        /* Mobile phones (max-width:768px): logo icon — search (middle) — burger, all in one row */
         @media (max-width:768px){
-          .navbar-header { display: none !important; }
           .navbar-inner{ height:58px; gap:8px; }
           .navbar-location-wrap,
           .navbar-search-wrap,
