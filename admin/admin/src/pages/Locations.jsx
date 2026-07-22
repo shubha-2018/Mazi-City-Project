@@ -42,7 +42,7 @@ function Locations() {
 
       alert(
         err.response?.data?.message ||
-          "Unable to delete location."
+        "Unable to delete location."
       );
     }
   };
@@ -103,7 +103,7 @@ function Locations() {
                         <td>
                           {item.image && (
                             <img
-                              src={`http://localhost:5000/uploads/${item.image}`}
+                              src={`https://mazi-city-project-1.onrender.com/uploads/${item.image}`}
                               alt={item.city}
                               width="60"
                               height="60"
@@ -121,11 +121,10 @@ function Locations() {
 
                         <td>
                           <span
-                            className={`badge ${
-                              item.status === "Active"
+                            className={`badge ${item.status === "Active"
                                 ? "bg-success"
                                 : "bg-danger"
-                            }`}
+                              }`}
                           >
                             {item.status}
                           </span>

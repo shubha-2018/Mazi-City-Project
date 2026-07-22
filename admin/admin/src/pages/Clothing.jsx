@@ -112,7 +112,7 @@ function Clothing() {
                             <td>
                               {item.image && (
                                 <img
-                                  src={`http://localhost:5000/uploads/${item.image}`}
+                                  src={`https://mazi-city-project-1.onrender.com/uploads/${item.image}`}
                                   alt={item.businessTitle}
                                   width="36"
                                   height="36"

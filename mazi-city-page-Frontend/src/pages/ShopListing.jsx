@@ -3,7 +3,7 @@
  */
 import React, { useState, useMemo, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import ShopCard  from '../components/ShopCard.jsx'
+import ShopCard from '../components/ShopCard.jsx'
 import FilterBar from '../components/FilterBar.jsx'
 
 const PER_PAGE = 10
@@ -15,13 +15,13 @@ export default function ShopListing() {
   const [shopsData, setShopsData] = useState([])
   const [loading, setLoading] = useState(true)
 
-  const q    = searchParams.get('q')    || ''
-  const cat  = searchParams.get('cat')  || ''
+  const q = searchParams.get('q') || ''
+  const cat = searchParams.get('cat') || ''
   const city = searchParams.get('city') || ''
 
   useEffect(() => {
     // Load shops from backend
-    fetch("http://localhost:5000/api/businesses")
+    fetch("https://mazi-city-project-1.onrender.com/api/businesses")
       .then(res => res.json())
       .then(res => {
         const savedShops = res.data || [];
@@ -39,11 +39,11 @@ export default function ShopListing() {
           discount: null,
           phone: shop.mobileNumber,
           whatsapp: shop.whatsappNumber,
-          image: shop.image ? `http://localhost:5000/uploads/${shop.image}` : null,
+          image: shop.image ? `https://mazi-city-project-1.onrender.com/uploads/${shop.image}` : null,
           description: shop.description,
           tags: [shop.category?.toLowerCase() || shop.storeName?.toLowerCase() || 'retail'],
         }));
-        
+
         setShopsData(transformedData);
         setLoading(false);
       })
@@ -55,22 +55,22 @@ export default function ShopListing() {
 
   const filtered = useMemo(() => {
     let list = [...shopsData]
-    if (q)    list = list.filter(s =>
+    if (q) list = list.filter(s =>
       (s.name || '').toLowerCase().includes(q.toLowerCase()) ||
       (s.category || '').toLowerCase().includes(q.toLowerCase())
     )
-    if (cat)  list = list.filter(s => s.tags && s.tags.some(tag => tag && tag.includes(cat)))
+    if (cat) list = list.filter(s => s.tags && s.tags.some(tag => tag && tag.includes(cat)))
     if (city) list = list.filter(s => s.city && s.city.toLowerCase().includes(city.toLowerCase()))
 
-    if (sort === 'rating')  list.sort((a, b) => b.rating - a.rating)
-    if (sort === 'newest')  list.sort((a, b) => b.id - a.id)
-    if (sort === 'offers')  list = list.filter(s => s.discount)
+    if (sort === 'rating') list.sort((a, b) => b.rating - a.rating)
+    if (sort === 'newest') list.sort((a, b) => b.id - a.id)
+    if (sort === 'offers') list = list.filter(s => s.discount)
 
     return list
   }, [q, cat, city, sort, shopsData])
 
   const totalPages = Math.ceil(filtered.length / PER_PAGE)
-  const pageItems  = filtered.slice((page - 1) * PER_PAGE, page * PER_PAGE)
+  const pageItems = filtered.slice((page - 1) * PER_PAGE, page * PER_PAGE)
 
   const handleSort = (v) => { setSort(v); setPage(1) }
 
@@ -139,12 +139,12 @@ export default function ShopListing() {
                 n === '...'
                   ? <span key={`dot-${i}`} className="page-dots">…</span>
                   : <button
-                      key={n}
-                      className={`page-btn ${n === page ? 'active' : ''}`}
-                      onClick={() => setPage(n)}
-                    >
-                      {n}
-                    </button>
+                    key={n}
+                    className={`page-btn ${n === page ? 'active' : ''}`}
+                    onClick={() => setPage(n)}
+                  >
+                    {n}
+                  </button>
               )}
 
               <button

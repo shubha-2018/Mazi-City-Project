@@ -48,7 +48,7 @@ function Categories() {
 
       alert(
         err.response?.data?.message ||
-          "Unable to delete category."
+        "Unable to delete category."
       );
     }
   };
@@ -116,7 +116,7 @@ function Categories() {
                         {item.image && (
 
                           <img
-                            src={`http://localhost:5000/uploads/${item.image}`}
+                            src={`https://mazi-city-project-1.onrender.com/uploads/${item.image}`}
                             alt={item.name}
                             width="60"
                             height="60"
@@ -137,11 +137,10 @@ function Categories() {
                       <td>
 
                         <span
-                          className={`badge ${
-                            item.status === "Active"
+                          className={`badge ${item.status === "Active"
                               ? "bg-success"
                               : "bg-secondary"
-                          }`}
+                            }`}
                         >
                           {item.status}
                         </span>

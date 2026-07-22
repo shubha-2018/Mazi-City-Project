@@ -31,18 +31,18 @@ function Navbar() {
 
   const locationRef = useRef(null)
   const searchRef = useRef(null)
-  
+
   const [CITIES, setCities] = useState([])
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/locations")
+    fetch("https://mazi-city-project-1.onrender.com/api/locations")
       .then(res => res.json())
       .then(res => {
         if (res.data) {
           const fetchedCities = res.data.map(loc => `${loc.city}, ${loc.state}`);
           setCities(fetchedCities);
           if (fetchedCities.length > 0 && !city) {
-             setCity(fetchedCities[0]);
+            setCity(fetchedCities[0]);
           }
         }
       })

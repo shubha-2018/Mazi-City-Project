@@ -25,7 +25,7 @@ export default function Home() {
 
   useEffect(() => {
     // Fetch Popular Shops
-    fetch("http://localhost:5000/api/popular-shops")
+    fetch("https://mazi-city-project-1.onrender.com/api/popular-shops")
       .then(res => res.json())
       .then(res => {
         const savedShops = res.data || [];
@@ -42,7 +42,7 @@ export default function Home() {
           discount: null,
           phone: shop.mobileNumber,
           whatsapp: shop.whatsappNumber,
-          image: shop.image ? `http://localhost:5000/uploads/${shop.image}` : null,
+          image: shop.image ? `https://mazi-city-project-1.onrender.com/uploads/${shop.image}` : null,
           description: shop.description,
           tags: [shop.category?.toLowerCase() || shop.storeName?.toLowerCase() || 'retail'],
         }));
@@ -51,7 +51,7 @@ export default function Home() {
       .catch(err => console.error("Failed to fetch popular shops", err));
 
     // Fetch Categories
-    fetch("http://localhost:5000/api/categories")
+    fetch("https://mazi-city-project-1.onrender.com/api/categories")
       .then(res => res.json())
       .then(res => {
         const fetchedCats = res.data || [];
@@ -84,7 +84,7 @@ export default function Home() {
         const transformedCats = fetchedCats.map(cat => ({
           id: cat.id,
           label: cat.name || 'Category',
-          image: cat.image ? (cat.image.startsWith('http') ? cat.image : `http://localhost:5000/uploads/${cat.image}`) : null,
+          image: cat.image ? (cat.image.startsWith('http') ? cat.image : `https://mazi-city-project-1.onrender.com/uploads/${cat.image}`) : null,
           icon: getCategoryIcon(cat.name),
           color: getCategoryColor(cat.name),
           route: (cat.name || '').toLowerCase()

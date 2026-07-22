@@ -15,7 +15,7 @@ function ShopDetails() {
   const [error, setError] = useState(false)
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/businesses/${id}`)
+    fetch(`https://mazi-city-project-1.onrender.com/api/businesses/${id}`)
       .then(res => res.json())
       .then(res => {
         if (res.success && res.data) {
@@ -33,7 +33,7 @@ function ShopDetails() {
             discount: null,
             phone: s.mobileNumber,
             whatsapp: s.whatsappNumber,
-            image: s.image ? `http://localhost:5000/uploads/${s.image}` : null,
+            image: s.image ? `https://mazi-city-project-1.onrender.com/uploads/${s.image}` : null,
             description: s.description,
             tags: [s.category?.toLowerCase() || s.storeName?.toLowerCase() || 'retail'],
           });
@@ -102,9 +102,9 @@ function ShopDetails() {
               }}
             />
           ) : (
-            <img 
-              src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='300'%3E%3Crect width='100%25' height='100%25' fill='%23eef1f5'/%3E%3Cg fill='none' stroke='%239aa3af' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M250 170 L250 110 a60 60 0 0 1 120 0 L370 170'/%3E%3Crect x='220' y='170' width='180' height='120' rx='15'/%3E%3C/g%3E%3C/svg%3E" 
-              alt={shop.name} 
+            <img
+              src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='300'%3E%3Crect width='100%25' height='100%25' fill='%23eef1f5'/%3E%3Cg fill='none' stroke='%239aa3af' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M250 170 L250 110 a60 60 0 0 1 120 0 L370 170'/%3E%3Crect x='220' y='170' width='180' height='120' rx='15'/%3E%3C/g%3E%3C/svg%3E"
+              alt={shop.name}
             />
           )}
         </div>

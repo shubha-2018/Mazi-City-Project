@@ -69,10 +69,10 @@ function AddElectronics() {
         data.append(key, formData[key]);
       });
       if (isEditMode) {
-        await API.put(`/electronics/${id}`, data, { headers: { "Content-Type": "multipart/form-data" }});
+        await API.put(`/electronics/${id}`, data, { headers: { "Content-Type": "multipart/form-data" } });
         alert("Electronics Updated Successfully");
       } else {
-        await API.post("/electronics", data, { headers: { "Content-Type": "multipart/form-data" }});
+        await API.post("/electronics", data, { headers: { "Content-Type": "multipart/form-data" } });
         alert("Electronics Added Successfully");
       }
       navigate("/electronics");
@@ -109,7 +109,7 @@ function AddElectronics() {
             {formData.image && (
               <div className="mb-3">
                 <img
-                  src={typeof formData.image === 'string' ? (formData.image.startsWith('http') ? formData.image : `http://localhost:5000/uploads/${formData.image}`) : URL.createObjectURL(formData.image)}
+                  src={typeof formData.image === 'string' ? (formData.image.startsWith('http') ? formData.image : `https://mazi-city-project-1.onrender.com/uploads/${formData.image}`) : URL.createObjectURL(formData.image)}
                   alt="Preview"
                   width="120"
                   className="img-thumbnail"

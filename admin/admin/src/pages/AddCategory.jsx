@@ -33,7 +33,7 @@ function AddCategory() {
       setStatus(category.status);
 
       if (category.image) {
-        setImage(`http://localhost:5000/uploads/${category.image}`);
+        setImage(`https://mazi-city-project-1.onrender.com/uploads/${category.image}`);
       }
 
     } catch (err) {

@@ -11,7 +11,7 @@ function Subcategories() {
   const [viewMode, setViewMode] = useState("table"); // table or card
 
   useEffect(() => {
-   loadBusinesses();
+    loadBusinesses();
 
     // Set view mode based on screen size
     const handleResize = () => {
@@ -23,55 +23,55 @@ function Subcategories() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
- const loadBusinesses = async () => {
-  try {
-    setLoading(true);
+  const loadBusinesses = async () => {
+    try {
+      setLoading(true);
 
-    const res = await API.get("/businesses");
+      const res = await API.get("/businesses");
 
-    setSubcategories(res.data.data);
+      setSubcategories(res.data.data);
 
-    setBackendStatus("connected");
+      setBackendStatus("connected");
 
-    setError("");
+      setError("");
 
-    setLoading(false);
+      setLoading(false);
 
-  } catch (err) {
+    } catch (err) {
 
-    console.log(err);
+      console.log(err);
 
-    setBackendStatus("disconnected");
+      setBackendStatus("disconnected");
 
-    setError("Backend Connection Failed");
+      setError("Backend Connection Failed");
 
-    setLoading(false);
+      setLoading(false);
 
-  }
-};
+    }
+  };
 
-const deleteSubcategory = async (id) => {
+  const deleteSubcategory = async (id) => {
 
-  if (!window.confirm("Delete this business?"))
-    return;
+    if (!window.confirm("Delete this business?"))
+      return;
 
-  try {
+    try {
 
-    await API.delete(`/businesses/${id}`);
+      await API.delete(`/businesses/${id}`);
 
-    alert("Business Deleted Successfully");
+      alert("Business Deleted Successfully");
 
-    loadBusinesses();
+      loadBusinesses();
 
-  } catch (err) {
+    } catch (err) {
 
-    console.log(err);
+      console.log(err);
 
-    alert("Delete Failed");
+      alert("Delete Failed");
 
-  }
+    }
 
-};
+  };
 
   return (
     <AdminLayout>
@@ -136,7 +136,7 @@ const deleteSubcategory = async (id) => {
                             <td>
                               {item.image && (
                                 <img
-                                  src={`http://localhost:5000/uploads/${item.image}`}
+                                  src={`https://mazi-city-project-1.onrender.com/uploads/${item.image}`}
                                   alt={item.businessTitle}
                                   width="36"
                                   height="36"
