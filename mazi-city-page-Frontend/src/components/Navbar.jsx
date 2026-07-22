@@ -200,7 +200,7 @@ function Navbar() {
               <span>List Your Shop</span>
             </Link>
 
-            <a href="http://localhost:5173/" className="btn-login" target="_blank" rel="noopener noreferrer">
+            <a href="#" className="btn-login" onClick={(e) => { e.preventDefault(); alert("Admin Panel must be deployed to Vercel first before it works on phones!"); }}>
               <FiUser size={17} />
               <span>Login / Sign Up</span>
             </a>
@@ -270,7 +270,7 @@ function Navbar() {
             <span>List Your Shop</span>
           </Link>
 
-          <a href="http://localhost:5173/" className="btn-login mobile-full" target="_blank" rel="noopener noreferrer" onClick={() => setMobileMenuOpen(false)}>
+          <a href="#" className="btn-login mobile-full" onClick={(e) => { e.preventDefault(); alert("Admin Panel must be deployed to Vercel first before it works on phones!"); setMobileMenuOpen(false); }}>
             <FiUser size={17} />
             <span>Login / Sign Up</span>
           </a>
