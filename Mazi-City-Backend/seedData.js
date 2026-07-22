@@ -2,10 +2,12 @@ const mysql = require('mysql2');
 require('dotenv').config();
 
 const db = mysql.createConnection({
-    host: process.env.DB_HOST || "localhost",
-    user: process.env.DB_USER || "root",
+    host: "mazi-city-db-thoratshubha2018-e591.l.aivencloud.com",
+    user: "avnadmin",
     password: process.env.DB_PASSWORD || "",
-    database: process.env.DB_NAME || "mazi_city",
+    database: "defaultdb",
+    port: 20929,
+    ssl: { rejectUnauthorized: false }
 });
 
 db.connect((err) => {
