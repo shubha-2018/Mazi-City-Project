@@ -67,6 +67,48 @@ async function runQuery(query, params) {
 
 async function seedDatabase() {
     try {
+        console.log("Initializing database tables...");
+        
+        await runQuery(`
+            CREATE TABLE IF NOT EXISTS locations (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                city VARCHAR(255) NOT NULL,
+                state VARCHAR(255),
+                status VARCHAR(50) DEFAULT 'Active',
+                createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        `, []);
+
+        await runQuery(`
+            CREATE TABLE IF NOT EXISTS categories (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                name VARCHAR(255) NOT NULL UNIQUE,
+                description TEXT,
+                image LONGTEXT,
+                status VARCHAR(50) DEFAULT 'Active',
+                createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        `, []);
+
+        await runQuery(`
+            CREATE TABLE IF NOT EXISTS businesses (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                image LONGTEXT,
+                businessTitle VARCHAR(255) NOT NULL,
+                storeName VARCHAR(255) NOT NULL,
+                category VARCHAR(255),
+                rating DECIMAL(3, 1) DEFAULT 0,
+                review INT DEFAULT 0,
+                location TEXT,
+                description TEXT,
+                mobileNumber VARCHAR(20),
+                whatsappNumber VARCHAR(20),
+                is_popular BOOLEAN DEFAULT false,
+                status VARCHAR(50) DEFAULT 'Active',
+                createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        `, []);
+
         console.log("Seeding 10 locations...");
         for (const loc of CITIES) {
             try {
