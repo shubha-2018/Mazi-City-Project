@@ -194,17 +194,15 @@ function Navbar() {
           </div>
 
           {/* Desktop actions — bell icon removed */}
-          <div className="navbar-actions">
-            <Link to="/register" className="btn-list-shop">
-              <MdStorefront size={18} />
-              <span>List Your Shop</span>
-            </Link>
-
-            <a href="#" className="btn-login" onClick={(e) => { e.preventDefault(); alert("Admin Panel must be deployed to Vercel first before it works on phones!"); }}>
-              <FiUser size={17} />
-              <span>Login / Sign Up</span>
-            </a>
-          </div>
+          <a
+            href="https://mazi-city-project.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-login"
+          >
+            <FiUser size={17} />
+            <span>Login / Sign Up</span>
+          </a>
 
           {/* Mobile hamburger */}
           <button
@@ -270,7 +268,13 @@ function Navbar() {
             <span>List Your Shop</span>
           </Link>
 
-          <a href="#" className="btn-login mobile-full" onClick={(e) => { e.preventDefault(); alert("Admin Panel must be deployed to Vercel first before it works on phones!"); setMobileMenuOpen(false); }}>
+          <a
+            href="https://mazi-city-project.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-login mobile-full"
+            onClick={() => setMobileMenuOpen(false)}
+          >
             <FiUser size={17} />
             <span>Login / Sign Up</span>
           </a>
